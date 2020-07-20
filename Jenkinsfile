@@ -10,5 +10,16 @@ node ('ubuntuagent1'){
          * docker build on the command line */
         app = docker.build("sksksk/snake:version1")
     }
- 
+    stage('Post-to-dockerhub') {
+    
+     docker.withRegistry('https://registry.hub.docker.com', 'dockercred') {
+            app.push("latest")
+        			}
+         }
+    
+    stage('Pull-image-server') {
+    
+         sh "docker-compose down"
+         sh "docker-compose up -d"	
+      } 
 }
