@@ -8,12 +8,12 @@ node ('ubuntuagent1'){
     stage('Build-and-Tag') {
     /* This builds the actual image; synonymous to
          * docker build on the command line */
-        app = docker.build("sksksk/snake:version1")
+        app = docker.build("sksksk/snake:version2")
     }
     stage('Post-to-dockerhub') {
     
      docker.withRegistry('https://registry.hub.docker.com', 'dockercred') {
-            app.push("latest")
+            app.push("version2")
         			}
          }
     
