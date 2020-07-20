@@ -22,10 +22,5 @@ node ('ubuntuagent1'){
          sh "docker-compose down"
          sh "docker-compose up -d"	
       }
-    
-    stage('DAST')
-        {
-        build 'SECURITY-DAST-OWASP_ZAP'
-        }
  
 }
